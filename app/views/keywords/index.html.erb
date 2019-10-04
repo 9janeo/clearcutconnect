@@ -1,0 +1,36 @@
+<h2>Keywords</h2>
+
+<%= link_to 'New Keyword', new_keyword_path, class: "btn btn-primary", style: "float: right;" %>
+
+
+<div class="table-responsive">
+<% cache 'current_keywords_table', skip_digest: true do %>
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Word</th>
+        <th>Owner</th>
+        <th>Tweets</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @keywords.each do |keyword| %>
+        <tr>
+          <td><%= image_tag(keyword.image.thumb.url) if keyword.image? %></td>
+          <td><%= keyword.word %></td>
+          <td><%= keyword.user_id.blank? ? 'None' : keyword.user.name %></td>
+          <td><%= keyword.tweets.count %></td>
+          <td><%= link_to 'Show', keyword, class: "btn btn-primary" %></td>
+          <% if (user_signed_in?) && (keyword.user == current_user)  %>
+            <td><%= link_to 'Edit', edit_keyword_path(keyword), class: "btn btn-success" %></td>
+            <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          <% end %>          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</div>
+<br>

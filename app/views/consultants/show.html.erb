@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<% # image_tag(@consultant.image.thumb.url) if @consultant.image? %>
+<h2><%= @consultant&.name&.titleize %> Profile (Twitter: <%= @consultant.twitter_handle %>)</h2>
+
+<%= link_to 'Edit', edit_consultant_path(@consultant) %> |
+<%= link_to 'Back', consultants_path %>
+
+<% cache "consultant_show_id#{@consultant.id}_p#{params[:page]}", skip_digest: true, expires_in: 10.minutes do %>
+  <div>
+  	<span class="row">
+      <%= label_tag('Id:') %>
+      <%= label_tag(@consultant.id) %>
+    </span>
+    <span class="row">  
+      <%= label_tag('Name:') %>
+      <%= label_tag(@consultant.name) %>
+    </span>
+    <br />
+    <span class="row">
+    	<%= label_tag('Email:') %>
+    	<%= @consultant.email %>
+    </span>
+    <br/>
+    <span class="row"><%= @consultant.bio %></span>
+    <br/>
+    <span class="row"><%= @consultant.twitter_handle %></span>
+    <br/>
+    <span class="row"><%= @consultant.facebook_url %></span>
+    <br\>
+    <span class="row"><%= @consultant.instagram_handle %></span>
+    <br\>
+    <%= link_to 'Show', @consultant, class: "btn btn-primary" %>
+    <%= link_to 'Edit', edit_consultant_path(@consultant), class: "btn btn-primary" %>
+    <%= link_to 'Destroy', @consultant, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+  </div>
+
+	<div style="padding: 20px; border: solid 1px #eee; margin-bottom: 20px;">
+		<% #will_paginate @twits %>
+	</div>
+<% end %>
+
+<p id="notice"><%= notice %></p>

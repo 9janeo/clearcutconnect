@@ -13,6 +13,8 @@
 !/log/.keep
 !/tmp/.keep
 
+config/initializers/01_dev_config_vars.rb
+
 /node_modules
 /yarn-error.log
 

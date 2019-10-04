@@ -1,0 +1,47 @@
+<%= form_for @consultant, :html => {:multipart => true} do |form| %>
+  <% if consultant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(consultant.errors.count, "error") %> prohibited consultant profile from being saved:</h2>
+
+      <ul>
+      <% consultant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :consultant_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :consultant_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio, id: :consultant_bio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter_handle, id: :consultant_twitter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :facebook %>
+    <%= form.text_field :facebook_url, id: :consultant_facebook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instagram %>
+    <%= form.text_field :instagram_handle, id: :consultant_instagram %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
