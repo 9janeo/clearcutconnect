@@ -17,3 +17,6 @@
 /yarn-error.log
 
 .byebug_history
+
+#Ignore config files
+01_dev_config_vars.rb
