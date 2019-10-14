@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag(@keyword.image.thumb.url) if @keyword.image? %>
+<h1>Word: <%= @keyword.word %> </h1>
+
+<%= link_to 'Edit', edit_keyword_path(@keyword) %> |
+<%= link_to 'Back', keywords_path %>
+
+<% cache "keyword_show_id#{@keyword.id}_p#{params[:page]}", skip_digest: true, expires_in: 5.minutes do %>
+	<h2>Latest <%= @keyword.word %> twits (<%= @keyword.tweets.count %>)</h2>
+	<ul>
+		<% @twits.each do |twit| %>
+			<li> <img src="<%= twit.user_image_url %>" width="30px"> <%= twit.user_screen_name %>: <%= twit.text %></li>
+		<% end %>
+	</ul>
+
+	<div style="padding: 20px; border: solid 1px #eee; margin-bottom: 20px;">
+		<%= will_paginate @twits %>
+	</div>
+<% end %>
