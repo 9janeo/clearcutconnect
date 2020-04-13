@@ -1,14 +1,17 @@
 class DashboardController < ApplicationController
   
-  def index
-  	# if user_signed_in?
-		  @user = User.find(1)
-		  @user_orders = @user.orders
-  			@user_keywords = @user.keywords
-  		#redirect_to keywords_path
-  	# else
-  	# 	redirect_to new_user_session_url
-  	# end
-  end
+	def index
+		# if !User.blank?
+		# 	@user = User.all
+		# 		@user_orders = @user.orders
+		# 		if @user
+		# 			@user_keywords = @user_keywords.blank? ? ["Empty"] : @user.keywords
+		# 		end
+		# 	redirect_to keywords_path
+		# else
+				@user = 'Neophemeral'				
+			console
+		# end
+	end
 
 end
