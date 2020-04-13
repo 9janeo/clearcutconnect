@@ -2,7 +2,7 @@
 
 <%= link_to 'New Keyword', new_keyword_path, class: "btn btn-primary", style: "float: right;" %>
 
-
+<span><%= @user %></span>
 <div class="table-responsive">
 <% cache 'current_keywords_table', skip_digest: true do %>
   <table class="table table-stripped">
