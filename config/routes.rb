@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
-  root to: 'dashboard#index'
+  # root to: 'dashboard#index'
 
   # devise_for :users
   # post '/aws/auth',
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   	
 	root 'dashboard#index'
   
-  	get 'dashboard/index'
+  	# get 'dashboard/index'
 	  resources :orders
 	  resources :consultants
 	  resources :services

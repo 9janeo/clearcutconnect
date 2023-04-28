@@ -11,7 +11,6 @@ class CreateTweets < ActiveRecord::Migration[5.1]
 		t.string :tweet_id
 		t.datetime :tweet_created_at
 		t.references :keyword
-      	t.timestamps
     end
   end
 end
