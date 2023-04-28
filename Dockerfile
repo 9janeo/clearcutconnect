@@ -1,18 +1,33 @@
-FROM ruby:alpine
+FROM ruby:3.0.0-alpine
 
-# https://bundler.io/v2.0/guides/bundler_docker_guide.html allow container 
-
-ENV GEM_HOME="/usr/local/bundle"
-ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
-
-RUN apk add --update build-base postgresql-dev tzdata nodejs
-RUN gem install rails -v '5.1.6'
+RUN apk add --update --virtual \
+  runtime-deps \
+  postgresql-client \
+  build-base \
+  libxml2-dev \
+  libxslt-dev \
+  nodejs \
+  yarn \
+  libffi-dev \
+  readline \
+  build-base \
+  postgresql-dev \
+  libc-dev \
+  linux-headers \
+  readline-dev \
+  file \
+  imagemagick \
+  git \
+  tzdata \
+  && rm -rf /var/cache/apk/*
 
 WORKDIR /app
-ADD Gemfile /app/
+COPY . /app/
+
+ENV BUNDLE_PATH /gems
+RUN yarn install
 RUN bundle install
 
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"] 
-# , "-p", "3000"
+ENTRYPOINT [ "bin/rails" ]
+CMD ["server", "-b", "0.0.0.0"]
 EXPOSE 3000
