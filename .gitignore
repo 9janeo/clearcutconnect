@@ -12,13 +12,25 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-config/initializers/01_dev_config_vars.rb
-
+/config/secrets.yml
 /node_modules
 /yarn-error.log
 
 .byebug_history
+.basrc
+
+config/initializers/01_dev_config_vars.rb
+/yarn-error.log
+
 
 #Ignore config files
 01_dev_config_vars.rb
+.01_dev_config_vars.rb
+config/initializers/01_dev_config_vars.rb
+
+config/secrets.yml
+config/database.yml
+config/database.yml.example
+
+public/uploads
+personallogs

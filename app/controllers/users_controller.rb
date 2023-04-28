@@ -43,6 +43,15 @@ class UsersController < ApplicationController
 
   end
 
+  def new
+    defaults = {
+      id: nil,
+      first_name: nil,
+      last_name: nil,
+      email: nil,
+      authentication_hash: nil
+    }
+  end
   # (...)
 
   private

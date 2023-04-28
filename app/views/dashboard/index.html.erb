@@ -1,6 +1,5 @@
 <h1>Dashboard</h1>
 
-# <p><%= @user.name %></p>
 <p><%= "NIYI's" %></p>
 <p><%= "That is the koko" %></p>
 
@@ -21,6 +20,7 @@
     </thead>
 		
 		<tbody>
+		<% unless @user_orders.blank? %>
 			<% @user_orders.each do |order| %>
 				<tr>
 				# <td><% "image_tag(order.image.thumb.url) if order.image?" %></td>
@@ -37,6 +37,7 @@
 			    </td>          
 			  </tr>
 			<% end %>
+		<% end %>
 		</tbody>
 	</table>
 
@@ -52,6 +53,7 @@
     </thead>
 		
 		<tbody>
+		<% unless @user_orders.blank? %>
 			<% @user_keywords.each do |keyword| %>
 				<tr>
 			    <td><%= image_tag(keyword.image.thumb.url) if keyword.image? %></td>
@@ -65,5 +67,7 @@
 			    <% end %>          
 			  </tr>
 			<% end %>
+		<% end %>
 		</tbody>
 	</table>
+	<%= link_to 'New Keyword', new_keyword_path, class: "btn btn-primary", style: "float: right;" %>
